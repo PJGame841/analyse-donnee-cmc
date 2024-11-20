@@ -7,8 +7,12 @@ app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/mapage.html");
 });
 
-app.get("/results", (req, res) => {
-	const results = moteur();
+app.get("/script.js", (req, res) => {
+	res.sendFile(__dirname + "/script.js");
+});
+
+app.get("/results", async (req, res) => {
+	const results = await moteur();
 
 	res.json(results);
 });
