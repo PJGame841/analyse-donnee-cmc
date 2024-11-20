@@ -149,8 +149,4 @@ async function calcul() {
 	return pts;
 }
 
-calcul().then((result) => {
-	console.log(result);
-});
-
 module.exports = calcul;
