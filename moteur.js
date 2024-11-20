@@ -60,20 +60,6 @@ function fetchMessageCitationsTransitions(idMessage) {
 	});
 }
 
-function fetchUsers() {
-	return new Promise((resolve, reject) => {
-		connection.query(
-			"SELECT DISTINCT Utilisateur FROM transition",
-			(err, rows) => {
-				if (err) {
-					reject(err);
-				}
-				resolve(rows.map((row) => row.Utilisateur));
-			}
-		);
-	});
-}
-
 function formatAttributs(attributs) {
 	const result = {};
 	const list = attributs.split(",");
@@ -85,8 +71,6 @@ function formatAttributs(attributs) {
 }
 
 async function calcul() {
-	const users = await fetchUsers();
-
 	// Les resultats sont par jours et par utilisateur
 	/* format: {
 		"2009-02-12": {
@@ -148,5 +132,9 @@ async function calcul() {
 
 	return pts;
 }
+
+calcul().then((result) => {
+	console.log(result);
+});
 
 module.exports = calcul;

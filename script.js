@@ -36,6 +36,7 @@ let chart = null;
 async function displayResultsChart() {
 	const results = await fetchCalcul();
 	document.getElementById("loading").style.display = "none";
+	document.getElementById("search").style.display = "block";
 	chart = new Chart(document.getElementById("myChart"), {
 		type: "line",
 		data: {
@@ -104,5 +105,6 @@ function searchPerson() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	document.getElementById("search").style.display = "none";
 	displayResultsChart();
 });
